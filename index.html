@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Uma carta para Jéssica ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            background:
+                radial-gradient(circle at center,
+                #6b001f,
+                #28000d 70%,
+                #100005);
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =========================
+           TELA INICIAL
+        ========================= */
+
+        #inicio {
+            position: fixed;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            z-index: 100;
+
+            background:
+                radial-gradient(circle,
+                #80002b,
+                #21000b 75%);
+
+            transition: 1.5s ease;
+        }
+
+        #inicio h2 {
+            font-size: 22px;
+            letter-spacing: 4px;
+            font-weight: normal;
+
+            margin-bottom: 25px;
+
+            animation: aparecer 2s ease;
+        }
+
+        #inicio h1 {
+            font-size: clamp(38px, 10vw, 70px);
+
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 0 15px #ff416c,
+                0 0 40px #ff1744;
+
+            animation: brilho 2s infinite alternate;
+        }
+
+        #inicio p {
+            font-size: 17px;
+            opacity: .85;
+            margin-bottom: 35px;
+        }
+
+        .abrir {
+            padding: 17px 35px;
+
+            border: 1px solid rgba(255,255,255,.6);
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.12);
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(10px);
+
+            transition: .4s;
+        }
+
+        .abrir:hover {
+            transform: scale(1.08);
+
+            background: rgba(255,255,255,.25);
+
+            box-shadow:
+                0 0 30px rgba(255,255,255,.3);
+        }
+
+
+        /* =========================
+           CARTA
+        ========================= */
+
+        #carta-container {
+
+            width: 92%;
+            max-width: 650px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 35px 30px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffaf0,
+                    #f5dfbd
+                );
+
+            color: #4b1725;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.7);
+
+            text-align: center;
+
+            opacity: 0;
+
+            transform:
+                translateY(40px)
+                scale(.9);
+
+            transition: 1.5s ease;
+
+            display: none;
+
+            scrollbar-width: none;
+        }
+
+        #carta-container::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .data {
+            font-size: 14px;
+
+            color: #9a5267;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .titulo-carta {
+
+            font-size: clamp(35px, 9vw, 60px);
+
+            color: #9e123d;
+
+            margin-bottom: 5px;
+        }
+
+
+        .subtitulo {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 15px;
+
+            color: #8a5262;
+
+            margin-bottom: 30px;
+        }
+
+
+        .texto {
+
+            text-align: left;
+
+            font-size: 20px;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
+        }
+
+
+        .texto .destaque {
+
+            display: block;
+
+            text-align: center;
+
+            margin: 25px 0;
+
+            font-size: 24px;
+
+            color: #a20f3e;
+
+            font-weight: bold;
+        }
+
+
+        .assinatura {
+
+            margin-top: 35px;
+
+            text-align: right;
+
+            font-size: 21px;
+
+            font-style: italic;
+
+            color: #7c2944;
+        }
+
+
+        /* =========================
+           CORAÇÃO
+        ========================= */
+
+        .heart-area {
+
+            height: 130px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin: 10px 0 20px;
+        }
+
+
+        .heart {
+
+            position: relative;
+
+            width: 70px;
+            height: 70px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff7896,
+                    #e9003f 55%,
+                    #850021
+                );
+
+            transform: rotate(-45deg);
+
+            animation: pulsar 1.2s infinite;
+
+            filter:
+                drop-shadow(
+                    8px 12px 15px
+                    rgba(80,0,20,.4)
+                );
+        }
+
+
+        .heart::before,
+        .heart::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 70px;
+            height: 70px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff7896,
+                    #e9003f 55%,
+                    #850021
+                );
+
+            border-radius: 50%;
+        }
+
+
+        .heart::before {
+            top: -35px;
+            left: 0;
+        }
+
+
+        .heart::after {
+            top: 0;
+            left: 35px;
+        }
+
+
+        /* =========================
+           MÚSICA
+        ========================= */
+
+        .musica {
+
+            margin-top: 25px;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #9e123d;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        .musica:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           CORAÇÕES FLUTUANDO
+        ========================= */
+
+        .coracao-flutuante {
+
+            position: fixed;
+
+            top: -40px;
+
+            z-index: 5;
+
+            pointer-events: none;
+
+            animation: cair linear forwards;
+        }
+
+
+        @keyframes cair {
+
+            0% {
+
+                transform:
+                    translateY(-50px)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes pulsar {
+
+            0% {
+                transform:
+                    rotate(-45deg)
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    rotate(-45deg)
+                    scale(1.25);
+            }
+
+            100% {
+                transform:
+                    rotate(-45deg)
+                    scale(1);
+            }
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes brilho {
+
+            from {
+                text-shadow:
+                    0 0 10px #ff416c;
+            }
+
+            to {
+                text-shadow:
+                    0 0 20px white,
+                    0 0 50px #ff1744;
+            }
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            #carta-container {
+                padding: 28px 22px;
+                max-height: 88vh;
+            }
+
+            .texto {
+                font-size: 17px;
+                line-height: 1.7;
+            }
+
+            .texto .destaque {
+                font-size: 21px;
+            }
+
+            .assinatura {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         TELA INICIAL
+    ========================= -->
+
+    <section id="inicio">
+
+        <h2>
+            JÉSSICA...
+        </h2>
+
+        <h1>
+            Tenho uma coisa<br>
+            para você ❤️
+        </h1>
+
+        <p>
+            Abra quando estiver pronta...
+        </p>
+
+        <button
+            class="abrir"
+            onclick="abrirCarta()">
+
+            💌 Abrir minha carta
+
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         CARTA
+    ========================= -->
+
+    <main id="carta-container">
+
+        <div class="data">
+            UMA CARTA DO MEU CORAÇÃO
+        </div>
+
+
+        <h1 class="titulo-carta">
+            Para Jéssica ❤️
+        </h1>
+
+
+        <div class="subtitulo">
+            Algumas coisas merecem ser escritas...
+        </div>
+
+
+        <!-- CORAÇÃO -->
+
+        <div class="heart-area">
+
+            <div class="heart"></div>
+
+        </div>
+
+
+        <!-- TEXTO -->
+
+        <div class="texto">
+
+            Jéssica,
+
+            Há 12 anos eu me apaixonei por você.
+
+            E, por mais que o tempo tenha passado,
+            uma parte de mim continuou esperando
+            por você.
+
+            Talvez pareça loucura...
+
+            Talvez eu seja mesmo um pouco louco.
+
+            Mas olha onde eu estou hoje:
+
+            <span class="destaque">
+                AQUI.
+                COM VOCÊ.
+                TE AMANDO. ❤️
+            </span>
+
+            Quero que você saiba que,
+            independentemente do que aconteça,
+            você nunca estará sozinha enquanto
+            eu puder estar ao seu lado.
+
+            Pode sempre contar comigo,
+            meu amor.
+
+            Eu quero estar presente nos dias bons,
+            nos dias difíceis, nas conquistas,
+            nos momentos simples e em todos aqueles
+            momentos que ainda vamos viver juntos.
+
+            Depois de 12 anos, uma coisa continua
+            sendo verdade:
+
+            <span class="destaque">
+                EU TE AMO. ❤️
+            </span>
+
+            E se eu tivesse a oportunidade de
+            voltar no tempo e encontrar aquele
+            garoto que se apaixonou por você
+            há 12 anos...
+
+            eu diria para ele:
+
+            "Tenha paciência.
+            Um dia você vai entender
+            por que esperou tanto."
+
+        </div>
+
+
+        <div class="assinatura">
+
+            Com todo o meu amor,<br>
+
+            para você, Jéssica. ❤️
+
+        </div>
+
+
+        <!-- MÚSICA -->
+
+        <button
+            class="musica"
+            onclick="tocarMusica()">
+
+            🎵 Tocar nossa música
+
+        </button>
+
+
+    </main>
+
+
+    <!-- =========================
+         MÚSICA
+    ========================= -->
+
+    <audio id="musica" loop>
+
+        <source
+            src="sigana.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <script>
+
+
+        /* =========================
+           ABRIR CARTA
+        ========================= */
+
+        function abrirCarta() {
+
+            const inicio =
+                document.getElementById("inicio");
+
+            const carta =
+                document.getElementById("carta-container");
+
+
+            inicio.style.opacity = "0";
+
+
+            setTimeout(() => {
+
+                inicio.style.display = "none";
+
+                carta.style.display = "block";
+
+
+                setTimeout(() => {
+
+                    carta.style.opacity = "1";
+
+                    carta.style.transform =
+                        "translateY(0) scale(1)";
+
+                }, 100);
+
+            }, 1200);
+
+
+            /* Explosão inicial */
+
+            for (let i = 0; i < 40; i++) {
+
+                setTimeout(
+                    criarCoracao,
+                    i * 50
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           TOCAR MÚSICA
+        ========================= */
+
+        function tocarMusica() {
+
+            const musica =
+                document.getElementById("musica");
+
+
+            musica.play();
+
+
+            document.querySelector(".musica")
+                .innerHTML =
+                "🎵 Sigana — Ícaro & Gilmar ❤️";
+
+        }
+
+
+        /* =========================
+           CRIAR CORAÇÕES
+        ========================= */
+
+        function criarCoracao() {
+
+            const coracao =
+                document.createElement("div");
+
+
+            coracao.className =
+                "coracao-flutuante";
+
+
+            const tipos = [
+                "❤️",
+                "💖",
+                "💕",
+                "💗",
+                "💓",
+                "💘",
+                "💞"
+            ];
+
+
+            coracao.innerHTML =
+                tipos[
+                    Math.floor(
+                        Math.random() *
+                        tipos.length
+                    )
+                ];
+
+
+            coracao.style.left =
+                Math.random() * 100 + "vw";
+
+
+            coracao.style.fontSize =
+                (Math.random() * 25 + 15)
+                + "px";
+
+
+            coracao.style.animationDuration =
+                (Math.random() * 5 + 4)
+                + "s";
+
+
+            document.body.appendChild(
+                coracao
+            );
+
+
+            setTimeout(() => {
+
+                coracao.remove();
+
+            }, 10000);
+
+        }
+
+
+        /* Chuva contínua */
+
+        setInterval(
+            criarCoracao,
+            350
+        );
+
+
+    </script>
+
+</body>
+
+</html>
